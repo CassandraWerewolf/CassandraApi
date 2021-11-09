@@ -15,14 +15,23 @@ namespace Persistence
                     configuration.GetConnectionString("LocalDbConnection"),
                     b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
 
-            services.AddDbContext<WerewolfContext>(options =>
+            //services.AddDbContext<WerewolfContext>(options =>
+            //    options.UseMySql(
+            //        configuration.GetConnectionString("DefaultConnection"),
+            //        ServerVersion.AutoDetect(configuration.GetConnectionString("DefaultConnection")),
+            //        b => b.MigrationsAssembly(typeof(WerewolfContext).Assembly.FullName)));
+
+            services.AddDbContextFactory<WerewolfContext>(options =>
                 options.UseMySql(
                     configuration.GetConnectionString("DefaultConnection"),
                     ServerVersion.AutoDetect(configuration.GetConnectionString("DefaultConnection")),
                     b => b.MigrationsAssembly(typeof(WerewolfContext).Assembly.FullName)));
 
             services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
-            services.AddScoped<IWerewolfContext, WerewolfContext>();
+
+            services.AddScoped<IWerewolfContext>(
+                sp => sp.GetRequiredService<IDbContextFactory<WerewolfContext>>()
+                .CreateDbContext());
         }
     }
 }

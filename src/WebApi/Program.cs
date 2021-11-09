@@ -3,6 +3,7 @@ using Application.Features.ProductFeatures.Commands;
 using Application.Features.ProductFeatures.Queries;
 using Application.Games.Queries;
 using Domain.Entities;
+using HotChocolate;
 using MediatR;
 using Persistence;
 
@@ -11,12 +12,15 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(c => 
+builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new() { Title = "Cassandra Project", Version = "v1" });
 });
 builder.Services.AddApplication();
 builder.Services.AddPersistence(builder.Configuration);
+
+// Add Hot Chocolate
+builder.Services.AddGraphQLServer().AddQueryType<WebApi.Query>();
 
 var app = builder.Build();
 
@@ -29,9 +33,12 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseRouting();
+app.MapGraphQL("/graphql");
+
 app.MapGet("/", () => "Hello from Cassandra Project API!").ExcludeFromDescription();
 
-app.MapGet("/product", async (IMediator Mediator, CancellationToken cancellationToken) => 
+app.MapGet("/product", async (IMediator Mediator, CancellationToken cancellationToken) =>
 {
     return Results.Ok(await Mediator.Send(new GetAllProducts(), cancellationToken));
 })
@@ -39,8 +46,8 @@ app.MapGet("/product", async (IMediator Mediator, CancellationToken cancellation
 .Produces<List<Product>>(200);
 
 app.MapGet("/games", async (IMediator Mediator, CancellationToken cancellationToken) =>
-{ 
-    return Results.Ok(await Mediator.Send(new GetAllGames(), cancellationToken)); 
+{
+    return Results.Ok(await Mediator.Send(new GetAllGames(), cancellationToken));
 })
 .WithName("GetGames")
 .Produces<List<Game>>(200);
@@ -63,7 +70,5 @@ app.MapPost("/product", async (CreateProduct command, IMediator Mediator) =>
     return Results.CreatedAtRoute("GetProduct", new { Id = result.Id }, result);
 })
 .WithName("CreateProduct");
-
-
 
 app.Run();
