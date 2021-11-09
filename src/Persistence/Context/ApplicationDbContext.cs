@@ -1,8 +1,4 @@
-﻿using Application.Common.Interfaces;
-using Domain.Entities;
-using Microsoft.EntityFrameworkCore;
-
-namespace Persistence.Context
+﻿namespace Persistence.Context
 {
     public class ApplicationDbContext : DbContext, IApplicationDbContext
     {

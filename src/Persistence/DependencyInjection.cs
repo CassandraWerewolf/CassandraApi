@@ -12,10 +12,17 @@ namespace Persistence
         {
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
-                    configuration.GetConnectionString("DefaultConnection"),
+                    configuration.GetConnectionString("LocalDbConnection"),
                     b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
 
+            services.AddDbContext<WerewolfContext>(options =>
+                options.UseMySql(
+                    configuration.GetConnectionString("DefaultConnection"),
+                    ServerVersion.AutoDetect(configuration.GetConnectionString("DefaultConnection")),
+                    b => b.MigrationsAssembly(typeof(WerewolfContext).Assembly.FullName)));
+
             services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
+            services.AddScoped<IWerewolfContext, WerewolfContext>();
         }
     }
 }

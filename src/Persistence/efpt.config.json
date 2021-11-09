@@ -1,0 +1,201 @@
+﻿{
+   "CodeGenerationMode": 0,
+   "ContextClassName": "WerewolfContext",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": false,
+   "ModelNamespace": null,
+   "OutputContextPath": "Context",
+   "OutputPath": "..\/Domain\/Entities",
+   "ProjectRootNamespace": "Persistence",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 0,
+   "Tables": [
+      {
+         "Name": "AM_roles",
+         "ObjectType": 0
+      },
+      {
+         "Name": "AM_template",
+         "ObjectType": 0
+      },
+      {
+         "Name": "Auto_dusk",
+         "ObjectType": 0
+      },
+      {
+         "Name": "Bio",
+         "ObjectType": 0
+      },
+      {
+         "Name": "CC_info",
+         "ObjectType": 0
+      },
+      {
+         "Name": "CC_players",
+         "ObjectType": 0
+      },
+      {
+         "Name": "Chat_message_actions",
+         "ObjectType": 0
+      },
+      {
+         "Name": "Chat_messages",
+         "ObjectType": 0
+      },
+      {
+         "Name": "Chat_rooms",
+         "ObjectType": 0
+      },
+      {
+         "Name": "Chat_users",
+         "ObjectType": 0
+      },
+      {
+         "Name": "Exits",
+         "ObjectType": 0
+      },
+      {
+         "Name": "Game_day_log",
+         "ObjectType": 0
+      },
+      {
+         "Name": "Game_orders",
+         "ObjectType": 0
+      },
+      {
+         "Name": "Game_series",
+         "ObjectType": 0
+      },
+      {
+         "Name": "Games",
+         "ObjectType": 0
+      },
+      {
+         "Name": "Item_orders",
+         "ObjectType": 0
+      },
+      {
+         "Name": "Item_templates",
+         "ObjectType": 0
+      },
+      {
+         "Name": "Items",
+         "ObjectType": 0
+      },
+      {
+         "Name": "Loc_exits",
+         "ObjectType": 0
+      },
+      {
+         "Name": "Locations",
+         "ObjectType": 0
+      },
+      {
+         "Name": "Misc_users",
+         "ObjectType": 0
+      },
+      {
+         "Name": "Moderators",
+         "ObjectType": 0
+      },
+      {
+         "Name": "Move_orders",
+         "ObjectType": 0
+      },
+      {
+         "Name": "Physics_processing",
+         "ObjectType": 0
+      },
+      {
+         "Name": "Players",
+         "ObjectType": 0
+      },
+      {
+         "Name": "Post_collect_slots",
+         "ObjectType": 0
+      },
+      {
+         "Name": "Posts",
+         "ObjectType": 0
+      },
+      {
+         "Name": "Replacements",
+         "ObjectType": 0
+      },
+      {
+         "Name": "Roles",
+         "ObjectType": 0
+      },
+      {
+         "Name": "Social_sites",
+         "ObjectType": 0
+      },
+      {
+         "Name": "Social_users",
+         "ObjectType": 0
+      },
+      {
+         "Name": "Stats",
+         "ObjectType": 0
+      },
+      {
+         "Name": "Tally",
+         "ObjectType": 0
+      },
+      {
+         "Name": "Timezones",
+         "ObjectType": 0
+      },
+      {
+         "Name": "Update_calendar",
+         "ObjectType": 0
+      },
+      {
+         "Name": "Users",
+         "ObjectType": 0
+      },
+      {
+         "Name": "Users_ngrams",
+         "ObjectType": 0
+      },
+      {
+         "Name": "Votes",
+         "ObjectType": 0
+      },
+      {
+         "Name": "Wolfy_awards",
+         "ObjectType": 0
+      },
+      {
+         "Name": "Wolfy_games",
+         "ObjectType": 0
+      },
+      {
+         "Name": "Wolfy_players",
+         "ObjectType": 0
+      },
+      {
+         "Name": "Wotw",
+         "ObjectType": 0
+      }
+   ],
+   "UiHint": ".werewolf",
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": false,
+   "UseDbContextSplitting": true,
+   "UseFluentApiOnly": true,
+   "UseHandleBars": false,
+   "UseInflector": true,
+   "UseLegacyPluralizer": false,
+   "UseNoConstructor": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoNavigations": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": true,
+   "UseSchemaFolders": false,
+   "UseSpatial": false
+}

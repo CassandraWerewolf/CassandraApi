@@ -1,6 +1,7 @@
 using Application;
 using Application.Features.ProductFeatures.Commands;
 using Application.Features.ProductFeatures.Queries;
+using Application.Games.Queries;
 using Domain.Entities;
 using MediatR;
 using Persistence;
@@ -34,7 +35,16 @@ app.MapGet("/product", async (IMediator Mediator, CancellationToken cancellation
 {
     return Results.Ok(await Mediator.Send(new GetAllProducts(), cancellationToken));
 })
-.WithName("GetProducts");
+.WithName("GetProducts")
+.Produces<List<Product>>(200);
+
+app.MapGet("/games", async (IMediator Mediator, CancellationToken cancellationToken) =>
+{ 
+    return Results.Ok(await Mediator.Send(new GetAllGames(), cancellationToken)); 
+})
+.WithName("GetGames")
+.Produces<List<Game>>(200);
+
 
 app.MapGet("/product/{id}", async (int id, IMediator Mediator, CancellationToken cancellationToken) =>
 {
@@ -52,8 +62,8 @@ app.MapPost("/product", async (CreateProduct command, IMediator Mediator) =>
     var result = await Mediator.Send(command);
     return Results.CreatedAtRoute("GetProduct", new { Id = result.Id }, result);
 })
-.WithName("CreateProduct")
-.Produces<List<Product>>(200);
+.WithName("CreateProduct");
+
 
 
 app.Run();
